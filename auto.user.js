@@ -4,8 +4,8 @@
 // @version      2.2
 // @description  Automatically open Telegram bots, click the Play button, then click the Launch button (if available), and move to the next bot with page refresh
 // @author       zoder codes
-//@downloadURL   https://github.com/bekzod-creator/universal/auto.js
-// @updateURL    https://github.com/bekzod-creator/universal/auto.js
+//@downloadURL   https://github.com/bekzod-creator/universal/raw/refs/heads/main/auto.user.js
+// @updateURL    https://github.com/bekzod-creator/universal/raw/refs/heads/main/auto.user.js
 // @match        https://web.telegram.org/*
 // @grant        none
 // ==/UserScript==
