@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name         0Telegram Bot Auto Opener with Play Button Click for Multiple Bots
+// @name         Telegram Bot Auto Opener with Play Button Click for Multiple Bots
 // @namespace    http://tampermonkey.net/
-// @version      2.2
+// @version      2.3
 // @description  Automatically open Telegram bots, click the Play button, then click the Launch button (if available), and move to the next bot with page refresh
 // @author       zoder codes
-// @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/auto.user.js
-// @updateURL    https://github.com/bekzod-creator/universal/raw/refs/heads/main/auto.user.js
+// @downloadURL  https://raw.githubusercontent.com/bekzod-creator/universal/main/auto.user.js
+// @updateURL    https://raw.githubusercontent.com/bekzod-creator/universal/main/auto.user.js
 // @match        https://web.telegram.org/*
 // @grant        none
 // ==/UserScript==
@@ -16,14 +16,14 @@
     // List of bots with their selectors and wait times
     const bots = [
         { bot: "memefi_coin_bot", text: "Play", waitTime: 10000 },
-        { bot: "pixelversexyzbot", text: "Fight for supply 💰🥊", waitTime: 30000, special: "pixelverse" }, // Special flag for pixelversexyzbot
-        { bot: "tapswap_bot", text: "👋 Play", waitTime: 100000, special: "tapswap" }, // Special flag for tapswap_bot
+        { bot: "pixelversexyzbot", text: "Fight for supply 💰🥊", waitTime: 30000, special: "pixelverse" },
+        { bot: "tapswap_bot", text: "👋 Play", waitTime: 100000, special: "tapswap" },
         { bot: "BlumCryptoBot", text: "Launch Blum", waitTime: 200000 },
-        { bot: "theYescoin_bot", text: "🕹 Play for Airdrop", waitTime: 100000, special: "yescoin" }, // Special flag for yescoin_bot
+        { bot: "theYescoin_bot", text: "🕹 Play for Airdrop", waitTime: 100000, special: "yescoin" },
         { bot: "gemzcoin_bot", text: "Play Now", waitTime: 30000 },
         { bot: "xkucoinbot", text: "🎮 Play Game", waitTime: 30000 },
         { bot: "notpixel", text: "start", waitTime: 40000 },
-        { bot: "token1win_bot", text: "Play", waitTime: 60000 }  // New bot added with Play button and 60 seconds wait
+        { bot: "token1win_bot", text: "Play", waitTime: 60000 }
     ];
 
     // Get the current bot index from localStorage, or start at 0
