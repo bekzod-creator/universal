@@ -17,7 +17,7 @@
     const bots = [
         { bot: "memefi_coin_bot", text: "Play", waitTime: 100000 },
         { bot: "pixelversexyzbot", text: "Fight for supply 💰🥊", waitTime: 30000, special: "pixelverse" },
-        { bot: "tapswap_bot", text: "👋 Play", waitTime: 100000, special: "tapswap" },
+        { bot: "tapswap_bot", text: "Play", waitTime: 100000, special: "tapswap" },
         { bot: "BlumCryptoBot", text: "Launch Blum", waitTime: 50000 },
         { bot: "theYescoin_bot", text: "🕹 Play for Airdrop", waitTime: 100000, special: "yescoin" },
         { bot: "gemzcoin_bot", text: "Play Now", waitTime: 30000 },
