@@ -12,6 +12,16 @@
 // ==/UserScript==
 
 
+// ==UserScript==
+// @name        memefi enabler
+// @namespace   Violentmonkey Scripts
+// @match       https://tg-app.memefi.club/*
+// @grant       none
+// @version     1.7
+// @author      -
+// @description 9/29/2024, 9:42:40 PM
+// ==/UserScript==
+
 (function() {
     'use strict';
 
@@ -21,15 +31,13 @@
         if (autoTurboButton) {
             autoTurboButton.click();
             console.log('Clicked auto turbo button'); // Debug message
-
-            // Wait for 10 seconds before clicking the specified button
-            setTimeout(() => {
-                const button = document.querySelector('button.btn-icon._BrowserHeaderButton_m63td_65'); // Updated selector
-                if (button) {
-                    button.click(); // Click the button
-                    console.log('Clicked the specified button on Telegram Web'); // Debug message
-                }
-            }, 10000); // Wait for 10000 milliseconds (10 seconds)
         }
+
+        // Wait for 40 seconds before reloading the page
+        setTimeout(() => {
+            console.log('Reloading the page in 40 seconds...');
+            location.reload(); // Reload the page
+        }, 40000); // Wait for 40000 milliseconds (40 seconds)
+
     }, 5000); // Wait for 5000 milliseconds (5 seconds)
 })();
