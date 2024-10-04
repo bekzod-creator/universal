@@ -11,16 +11,6 @@
 // ==/UserScript==
 
 
-// ==UserScript==
-// @name        memefi enabler
-// @namespace   Violentmonkey Scripts
-// @match       https://tg-app.memefi.club/*
-// @grant       none
-// @version     1.4
-// @author      -
-// @description 9/29/2024, 9:42:40 PM
-// ==/UserScript==
-
 (function() {
     'use strict';
 
