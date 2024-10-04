@@ -27,12 +27,16 @@
     function checkTurboStatus() {
         const turboStatus = document.querySelector('.turbo-boost-status'); // Adjust the selector as needed
         if (turboStatus && turboStatus.textContent.includes("0/3")) {
-            const button = document.querySelector('button.btn-icon._BrowserHeaderButton_m63td_65'); // Updated selector
-            if (button) {
-                button.click(); // Click the button if turbo boost is 0/3
-                console.log('Clicked button for turbo boost 0/3'); // Debug message
-                return; // Stop checking once clicked
-            }
+            // Simulate pressing Alt + Left Arrow key
+            const event = new KeyboardEvent('keydown', {
+                key: 'ArrowLeft',
+                code: 'ArrowLeft',
+                altKey: true,
+                bubbles: true
+            });
+            document.dispatchEvent(event);
+            console.log('Simulated Alt + Left Arrow key'); // Debug message
+            return; // Stop checking once the event is dispatched
         }
         setTimeout(checkTurboStatus, 10000); // Check every 10 seconds
     }
