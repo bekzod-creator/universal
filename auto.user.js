@@ -15,7 +15,7 @@
 
     // List of bots with their selectors and wait times
     const bots = [
-        { bot: "memefi_coin_bot", text: "Play", waitTime: 10000 },
+        { bot: "memefi_coin_bot", text: "Play", waitTime: 100000 },
         { bot: "pixelversexyzbot", text: "Fight for supply 💰🥊", waitTime: 30000, special: "pixelverse" },
         { bot: "tapswap_bot", text: "👋 Play", waitTime: 100000, special: "tapswap" },
         { bot: "BlumCryptoBot", text: "Launch Blum", waitTime: 50000 },
