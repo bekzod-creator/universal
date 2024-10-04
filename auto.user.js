@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Telegram Bot Auto Opener with Play Button Click for Multiple Bots
+// @name         tanagram AI
 // @namespace    http://tampermonkey.net/
 // @version      2.3
 // @description  Automatically open Telegram bots, click the Play button, then click the Launch button (if available), and move to the next bot with page refresh
