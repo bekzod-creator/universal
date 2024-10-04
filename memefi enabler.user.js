@@ -6,8 +6,8 @@
 // @grant        none
 // @version      1.2
 // @author       bekzod
-// @downloadURL  https://raw.githubusercontent.com/bekzod-creator/universal/refs/heads/main/memefi%20enabler.user.js
-// @updateURL    https://raw.githubusercontent.com/bekzod-creator/universal/refs/heads/main/memefi%20enabler.user.js
+// @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/memefi%20enabler.user.js
+// @updateURL    https://github.com/bekzod-creator/universal/raw/refs/heads/main/memefi%20enabler.user.js
 // @description  f you
 // ==/UserScript==
 
