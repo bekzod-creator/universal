@@ -10,7 +10,6 @@
 // @description  f you
 // ==/UserScript==
 
-
 (function() {
     'use strict';
 
@@ -20,29 +19,18 @@
         if (autoTurboButton) {
             autoTurboButton.click();
             console.log('Clicked auto turbo button'); // Debug message
+
+            // Wait for 10 seconds before simulating Alt + Left Arrow key
+            setTimeout(() => {
+                const event = new KeyboardEvent('keydown', {
+                    key: 'ArrowLeft',
+                    code: 'ArrowLeft',
+                    altKey: true,
+                    bubbles: true
+                });
+                document.dispatchEvent(event);
+                console.log('Simulated Alt + Left Arrow key'); // Debug message
+            }, 10000); // Wait for 10000 milliseconds (10 seconds)
         }
     }, 5000); // Wait for 5000 milliseconds (5 seconds)
-
-    // Function to check turbo status every 10 seconds
-    function checkTurboStatus() {
-        const turboStatus = document.querySelector('.turbo-boost-status'); // Adjust the selector as needed
-        if (turboStatus && turboStatus.textContent.includes("0/3")) {
-            // Simulate pressing Alt + Left Arrow key
-            const event = new KeyboardEvent('keydown', {
-                key: 'ArrowLeft',
-                code: 'ArrowLeft',
-                altKey: true,
-                bubbles: true
-            });
-            document.dispatchEvent(event);
-            console.log('Simulated Alt + Left Arrow key'); // Debug message
-            return; // Stop checking once the event is dispatched
-        }
-        setTimeout(checkTurboStatus, 10000); // Check every 10 seconds
-    }
-
-    // Start checking turbo boost status after an initial delay of 5 seconds
-    setTimeout(() => {
-        checkTurboStatus(); // Start checking after 5 seconds
-    }, 5000);
 })();
