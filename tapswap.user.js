@@ -1,11 +1,13 @@
 // ==UserScript==
-// @name        tapswap getter 
-// @namespace   Violentmonkey Scripts
-// @match       *://*.tapswap.*/*
-// @grant       none
-// @version     1.0
-// @author      -
-// @description 10/5/2024, 12:48:38 AM
+// @name         tapswap getter 
+// @namespace    Violentmonkey Scripts
+// @match        *://*.tapswap.*/*
+// @grant        none
+// @version      1.0
+// @author       Bekoz
+// @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/tapswap.user.js
+// @updateURL    https://github.com/bekzod-creator/universal/raw/refs/heads/main/tapswap.user.js
+// @description  f you
 // ==/UserScript==
 
 (function() {
