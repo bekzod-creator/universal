@@ -23,10 +23,24 @@
             console.log('Clicked auto turbo button'); // Debug message
         }
 
-        // Wait for 40 seconds before reloading the page
+        // Wait for 40 seconds before reloading the content inside the tab
         setTimeout(() => {
-            console.log('Reloading the page in 40 seconds...');
-            location.reload(); // Reload the page
+            const targetDiv = document.querySelector('div._tabs_1pooj_1');
+            if (targetDiv) {
+                // Clear existing content (if needed)
+                targetDiv.innerHTML = ''; // Optionally clear existing content
+                
+                // You can either:
+                // 1. Set new content
+                targetDiv.innerHTML = '<p>Loading new content...</p>'; // Example content
+                
+                // 2. Or, re-fetch or initialize the original content here
+                // fetchDataAndUpdate(); // Call a function to fetch new content, if you have one
+
+                console.log('Reloaded content in the tab after 40 seconds');
+            } else {
+                console.log('Target div not found');
+            }
         }, 40000); // Wait for 40000 milliseconds (40 seconds)
 
     }, 5000); // Wait for 5000 milliseconds (5 seconds)
