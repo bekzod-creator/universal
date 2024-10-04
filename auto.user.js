@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         tanagram AI
 // @namespace    http://tampermonkey.net/
-// @version      2.3
-// @description  Automatically open Telegram bots, click the Play button, then click the Launch button (if available), and move to the next bot with page refresh
+// @version      2.4
+// @description  Automatically open Telegram bots, click the Play button, then click the Launch button (if available), and move to the next bot with page refresh, then repeat the cycle infinitely.
 // @author       zoder codes
 // @downloadURL  https://raw.githubusercontent.com/bekzod-creator/universal/main/auto.user.js
 // @updateURL    https://raw.githubusercontent.com/bekzod-creator/universal/main/auto.user.js
@@ -23,7 +23,8 @@
         { bot: "gemzcoin_bot", text: "Play Now", waitTime: 30000 },
         { bot: "xkucoinbot", text: "🎮 Play Game", waitTime: 30000 },
         { bot: "notpixel", text: "start", waitTime: 40000 },
-        { bot: "token1win_bot", text: "Play", waitTime: 60000 }
+        { bot: "token1win_bot", text: "Play", waitTime: 60000 },
+        { bot: "hamster_kombat_bot", text: "Play", waitTime: 100000, special: "hamster_kombat" } // Added the new bot
     ];
 
     // Get the current bot index from localStorage, or start at 0
@@ -84,8 +85,19 @@
         return null;
     }
 
+    // Special function to handle the custom hamster_kombat_bot element
+    function findHamsterKombatCustomElement() {
+        const elements = document.querySelectorAll('div.new-message-bot-commands-view');
+        for (let element of elements) {
+            if (element.textContent.trim() === 'Play') {
+                return element;
+            }
+        }
+        return null;
+    }
+
     // Function to click the Play button, then attempt to click the Launch button (if found)
-    function clickPlayThenLaunch(bot) {
+    function clickPlayThenLaunch(bot, retryCount = 0) {
         let playButton = findButtonByText(bot.text);
 
         // Handle the special case for tapswap_bot with the custom element
@@ -101,6 +113,11 @@
         // Handle the special case for pixelversexyzbot with the custom element
         if (bot.bot === "pixelversexyzbot" && !playButton) {
             playButton = findPixelverseCustomElement(); // Use the custom search for pixelversexyzbot
+        }
+
+        // Handle the special case for hamster_kombat_bot with the custom element
+        if (bot.bot === "hamster_kombat_bot" && !playButton) {
+            playButton = findHamsterKombatCustomElement(); // Use the custom search for hamster_kombat_bot
         }
 
         if (playButton) {
@@ -128,11 +145,19 @@
                 }
             }, 5000);  // 5 seconds delay after clicking the Play button
         } else {
-            console.log(`Play button not found for ${bot.bot}, skipping...`);
-            // Move to the next bot if neither button is found
-            setTimeout(() => {
-                checkAndMoveToNextBot(bot);
-            }, bot.waitTime);  // Move to the next bot after the wait time
+            console.log(`Play button not found for ${bot.bot}, retrying... (${retryCount + 1}/2)`);
+
+            // Retry logic: Try 2 times before skipping the bot
+            if (retryCount < 2) {
+                setTimeout(() => {
+                    clickPlayThenLaunch(bot, retryCount + 1);  // Retry after 2 seconds
+                }, 2000);
+            } else {
+                console.log(`Play button not found after 2 retries for ${bot.bot}, skipping...`);
+                setTimeout(() => {
+                    checkAndMoveToNextBot(bot);
+                }, bot.waitTime);  // Move to the next bot after the wait time
+            }
         }
     }
 
@@ -143,8 +168,9 @@
             localStorage.setItem('currentBotIndex', currentBotIndex); // Store current bot index
             location.reload(); // Refresh the page before moving to the next bot
         } else {
-            console.log("All bots processed.");
-            localStorage.removeItem('currentBotIndex'); // Clear storage when done
+            console.log("All bots processed. Restarting the cycle...");
+            localStorage.setItem('currentBotIndex', 0); // Reset index to 0 to restart the cycle
+            location.reload(); // Refresh the page to start over
         }
     }
 
