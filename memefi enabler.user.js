@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         memefi enabler
+// @name         memefienabler
 // @namespace    Violentmonkey Scripts
 // @match        https://tg-app.memefi.club/*
 // @grant        none
