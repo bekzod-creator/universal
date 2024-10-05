@@ -2,7 +2,6 @@
 // @name         memefi enabler
 // @namespace    Violentmonkey Scripts
 // @match        https://tg-app.memefi.club/*
-// @match        https://web.telegram.org/k/*
 // @grant        none
 // @version      1.2
 // @author       bekzod
@@ -11,11 +10,10 @@
 // @description  f you
 // ==/UserScript==
 
-
 (function() {
     'use strict';
 
-    // Function to click the auto turbo button after 5 seconds
+    // Function to click the auto turbo button after 40 seconds
     setTimeout(() => {
         const autoTurboButton = document.querySelector('.auto-turbo-btn');
         if (autoTurboButton) {
@@ -29,11 +27,11 @@
             if (targetDiv) {
                 // Clear existing content (if needed)
                 targetDiv.innerHTML = ''; // Optionally clear existing content
-                
+
                 // You can either:
                 // 1. Set new content
                 targetDiv.innerHTML = '<p>Loading new content...</p>'; // Example content
-                
+
                 // 2. Or, re-fetch or initialize the original content here
                 // fetchDataAndUpdate(); // Call a function to fetch new content, if you have one
 
@@ -43,5 +41,5 @@
             }
         }, 40000); // Wait for 40000 milliseconds (40 seconds)
 
-    }, 5000); // Wait for 5000 milliseconds (5 seconds)
+    }, 40000); // Wait for 40000 milliseconds (40 seconds)
 })();
