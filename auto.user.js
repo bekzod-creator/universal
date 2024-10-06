@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         tanagram AI
 // @namespace    http://tampermonkey.net/
-// @version      2.6
+// @version      2.5
 // @description  Automatically open Telegram bots, click the Play button, then click the Launch button (if available), and move to the next bot with page refresh, then repeat the cycle infinitely.
 // @author       zoder codes
 // @downloadURL  https://raw.githubusercontent.com/bekzod-creator/universal/main/auto.user.js
@@ -16,15 +16,15 @@
     // List of bots with their selectors and wait times
     const bots = [
         { bot: "memefi_coin_bot", text: "Play", waitTime: 100000 },
-        { bot: "BybitCoinsweeper_Bot", text: "Play!", waitTime: 15000, special: "bybit_coinsweeper" }, // Added BybitCoinsweeper_Bot
-        { bot: "tapswap_bot", text: "Play", waitTime: 60000, special: "tapswap" },
+        { bot: "BybitCoinsweeper_Bot", text: "Play!", waitTime: 600000, special: "bybit_coinsweeper" }, // BybitCoinsweeper_Bot with 30 sec wait time
+        { bot: "tapswap_bot", text: "Play", waitTime: 40000, special: "tapswap" },
         { bot: "BlumCryptoBot", text: "Launch Blum", waitTime: 50000 },
         { bot: "theYescoin_bot", text: "🕹 Play for Airdrop", waitTime: 100000, special: "yescoin" },
         { bot: "gemzcoin_bot", text: "Play Now", waitTime: 30000 },
         { bot: "xkucoinbot", text: "🎮 Play Game", waitTime: 30000 },
         { bot: "notpixel", text: "start", waitTime: 40000 },
         { bot: "token1win_bot", text: "Play", waitTime: 60000 },
-        { bot: "hamster_kombat_bot", text: "Play", waitTime: 100000, special: "hamster_kombat" }
+        { bot: "hamster_kombat_bot", text: "Play", waitTime: 20000, special: "hamster_kombat" }
     ];
 
     let currentBotIndex = localStorage.getItem('currentBotIndex') ? parseInt(localStorage.getItem('currentBotIndex')) : 0;
@@ -87,18 +87,6 @@
         return null;
     }
 
-    function checkForYouLost(retryCount = 0) {
-        let lostText = document.querySelector("div:contains('You Lost!'), p:contains('You Lost!')");
-
-        if (lostText) {
-            console.log("Detected 'You Lost!' message. Moving to the next bot...");
-            checkAndMoveToNextBot(bots[currentBotIndex]);
-        } else {
-            console.log("'You Lost!' message not found. Retrying...");
-            setTimeout(() => checkForYouLost(), 30000); // Check again after 30 seconds
-        }
-    }
-
     function clickPlayThenLaunch(bot, retryCount = 0) {
         let playButton = findButtonByText(bot.text);
 
@@ -122,27 +110,10 @@
             playButton.click();
             console.log(`Play button clicked for ${bot.bot}`);
 
-            if (bot.bot === "BybitCoinsweeper_Bot") {
-                setTimeout(() => checkForYouLost(), 30000); // Start checking for "You Lost!" message
-            } else {
-                setTimeout(() => {
-                    const launchButton = findButtonByText("Launch");
-                    if (launchButton) {
-                        launchButton.click();
-                        console.log(`'Launch' button clicked for ${bot.bot}`);
-
-                        setTimeout(() => {
-                            checkAndMoveToNextBot(bot);
-                        }, bot.waitTime);
-
-                    } else {
-                        console.log(`'Launch' button not found for ${bot.bot}, waiting for the full wait time...`);
-                        setTimeout(() => {
-                            checkAndMoveToNextBot(bot);
-                        }, bot.waitTime);
-                    }
-                }, 5000);
-            }
+            // Simply wait for the specified wait time and move to the next bot
+            setTimeout(() => {
+                checkAndMoveToNextBot(bot);
+            }, bot.waitTime);
         } else {
             console.log(`Play button not found for ${bot.bot}, retrying... (${retryCount + 1}/2)`);
 
