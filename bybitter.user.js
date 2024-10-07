@@ -6,8 +6,8 @@
 // @version      0.1
 // @author       zoder
 // @icon         https://mudachyo.codes/bybit/logo.jpg
-// @downloadURL  -
-// @updateURL    -
+// @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/bybitter.user.js
+// @updateURL    https://github.com/bekzod-creator/universal/raw/refs/heads/main/bybitter.user.js
 // ==/UserScript==
 
 (function() {
