@@ -4,6 +4,8 @@
 // @match       https://zavod.mdaowallet.com/*
 // @grant       none
 // @version     1.0
+// @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/ZAVOD%20CLAIMER.user.js
+// @updateURL    https://github.com/bekzod-creator/universal/raw/refs/heads/main/ZAVOD%20CLAIMER.user.js
 // @description Clicks the "CLAIM" button once when found
 // ==/UserScript==
 
