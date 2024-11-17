@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         bekzod codes' AI in the future for adham
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      2.0
 // @description  for adham only
 // @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/zavood.user.js
 // @updateURL    https://github.com/bekzod-creator/universal/raw/refs/heads/main/zavood.user.js
