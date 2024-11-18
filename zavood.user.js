@@ -19,7 +19,7 @@
             mainText: "Играть",
             fallbackText: "Play&Earn",
             waitTime: 20000, // 20 seconds
-            allowedTime: { start: "09:00", end: "12:00" } // Active from 9 AM to 9 PM
+            allowedTime: { start: "09:00", end: "00:00" } // Active from 9 AM to 9 PM
         },
         {
             name: "BlumCryptoBot",
@@ -39,7 +39,7 @@
         {
             name: "hamster_kombat_bot",
             mainText: "Play",
-            waitTime: 20000 // 20 seconds
+            waitTime: 30000 // 20 seconds
         }
     ];
 
