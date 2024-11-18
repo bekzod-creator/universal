@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         bekzod codes' AI in the future 
 // @namespace    http://tampermonkey.net/
-// @version      2.5
+// @version      2.6
 // @description  bekzods autmatic AI thing bot
 // @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/zavood.user.js
 // @updateURL    https://github.com/bekzod-creator/universal/raw/refs/heads/main/zavood.user.js
