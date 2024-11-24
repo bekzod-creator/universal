@@ -16,10 +16,10 @@
     // List of bots with their selectors and wait times
     const bots = [
         { bot: "memefi_coin_bot", text: "Play", waitTime: 100000 },
-        { bot: "BybitCoinsweeper_Bot", text: "Play!", waitTime: 200000, special: "bybit_coinsweeper" },
-        { bot: "tapswap_bot", text: "Play", waitTime: 100000, special: "tapswap" },
+        { bot: "BybitCoinsweeper_Bot", text: "Play!", waitTime: 100000, special: "bybit_coinsweeper" },
+        { bot: "tapswap_bot", text: "Play", waitTime: 8000, special: "tapswap" },
         { bot: "BlumCryptoBot", text: "Launch Blum", waitTime: 50000 },
-        { bot: "theYescoin_bot", text: "🕹 Play for Airdrop", waitTime: 100000, special: "yescoin" },
+        { bot: "theYescoin_bot", text: "🕹 Play for Airdrop", waitTime: 8000, special: "yescoin" },
         { bot: "gemzcoin_bot", text: "Play Now", waitTime: 30000 },
         { bot: "xkucoinbot", text: "🎮 Play Game", waitTime: 30000 },
         { bot: "notpixel", text: "start", waitTime: 40000 },
