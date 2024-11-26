@@ -15,10 +15,10 @@
 
     // List of bots with their selectors, wait times, and allowed time constraints
     const bots = [
-        { bot: "BybitCoinsweeper_Bot", text: "Play!", waitTime: 200000, special: "bybit_coinsweeper" },
+        { bot: "BybitCoinsweeper_Bot", text: "Play!", waitTime: 70000, special: "bybit_coinsweeper" },
         { bot: "BlumCryptoBot", text: "Launch Blum", waitTime: 50000 },
-        { bot: "hamster_kombat_bot", text: "Play", waitTime: 100000, special: "hamster_kombat" },
-        { bot: "notpixel", text: "start", waitTime: 40000 },
+        { bot: "hamster_kombat_bot", text: "Play", waitTime: 30000, special: "hamster_kombat" },
+        { bot: "notpixel", text: "start", waitTime: 15000 },
         { bot: "Mdaowalletbot", text: "Играть", fallbackText: "Play&Earn", waitTime: 15000, allowedTime: { start: "09:00", end: "12:00" } }
     ];
 
