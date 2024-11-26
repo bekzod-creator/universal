@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         tanagram AI
 // @namespace    http://tampermonkey.net/
-// @version      2.7
+// @version      2.8
 // @description  Automatically open Telegram bots, click the Play button, then click the Launch button (if available), and move to the next bot with page refresh, then repeat the cycle infinitely.
 // @author       zoder codes
 // @downloadURL  https://raw.githubusercontent.com/bekzod-creator/universal/main/auto.user.js
@@ -10,18 +10,34 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
-    // List of remaining bots with their selectors and wait times
+    // List of bots with their selectors, wait times, and allowed time constraints
     const bots = [
         { bot: "BybitCoinsweeper_Bot", text: "Play!", waitTime: 200000, special: "bybit_coinsweeper" },
         { bot: "BlumCryptoBot", text: "Launch Blum", waitTime: 50000 },
         { bot: "hamster_kombat_bot", text: "Play", waitTime: 100000, special: "hamster_kombat" },
-        { bot: "notpixel", text: "start", waitTime: 40000 }
+        { bot: "notpixel", text: "start", waitTime: 40000 },
+        { bot: "Mdaowalletbot", text: "Играть", fallbackText: "Play&Earn", waitTime: 15000, allowedTime: { start: "09:00", end: "12:00" } }
     ];
 
     let currentBotIndex = localStorage.getItem('currentBotIndex') ? parseInt(localStorage.getItem('currentBotIndex')) : 0;
+
+    // Function to check if the current time is within allowed hours
+    function isWithinAllowedTime(allowedTime) {
+        if (!allowedTime) return true;
+
+        const now = new Date();
+        const currentTime = now.getHours() * 60 + now.getMinutes(); // Convert time to minutes since midnight
+
+        const [startHour, startMinute] = allowedTime.start.split(':').map(Number);
+        const [endHour, endMinute] = allowedTime.end.split(':').map(Number);
+        const startTime = startHour * 60 + startMinute;
+        const endTime = endHour * 60 + endMinute;
+
+        return currentTime >= startTime && currentTime <= endTime;
+    }
 
     // Function to open the bot's chat
     function openBot(bot) {
@@ -32,32 +48,22 @@
         }
     }
 
-    // Function to find buttons by text
-    function findButtonByText(text) {
+    // Function to find buttons by text or fallback text
+    function findButtonByText(text, fallbackText = null) {
         const elements = document.querySelectorAll('div, span, button');
         for (let element of elements) {
-            if (element.textContent.trim() === text) {
+            if (element.textContent.trim() === text || (fallbackText && element.textContent.trim() === fallbackText)) {
                 return element;
             }
         }
         return null;
     }
 
-    // Special functions to handle custom bot elements (like hamster_kombat, bybit_coinsweeper, etc.)
-    function findHamsterKombatCustomElement() {
-        const elements = document.querySelectorAll('div.new-message-bot-commands-view');
+    // Special function to handle Mdaowalletbot
+    function findMdaowalletBotCustomElement() {
+        const elements = document.querySelectorAll('div, span, button');
         for (let element of elements) {
-            if (element.textContent.trim() === 'Play') {
-                return element;
-            }
-        }
-        return null;
-    }
-
-    function findBybitCoinsweeperCustomElement() {
-        const elements = document.querySelectorAll('div.new-message-bot-commands-view');
-        for (let element of elements) {
-            if (element.textContent.trim() === 'Play!') {
+            if (element.textContent.trim() === "Играть" || element.textContent.trim() === "Play&Earn") {
                 return element;
             }
         }
@@ -66,15 +72,11 @@
 
     // Function to click the Play button, and then try to find and click the Launch button
     function clickPlayThenLaunch(bot, retryCount = 0) {
-        let playButton = findButtonByText(bot.text);
+        let playButton = findButtonByText(bot.text, bot.fallbackText);
 
         // Handle special bots with custom elements
-        if (bot.bot === "hamster_kombat_bot" && !playButton) {
-            playButton = findHamsterKombatCustomElement();
-        }
-
-        if (bot.bot === "BybitCoinsweeper_Bot" && !playButton) {
-            playButton = findBybitCoinsweeperCustomElement();
+        if (bot.bot === "Mdaowalletbot" && !playButton) {
+            playButton = findMdaowalletBotCustomElement();
         }
 
         if (playButton) {
@@ -103,13 +105,13 @@
 
             if (retryCount < 2) {
                 setTimeout(() => {
-                    clickPlayThenLaunch(bot, retryCount + 1);  // Retry after 2 seconds
+                    clickPlayThenLaunch(bot, retryCount + 1); // Retry after 2 seconds
                 }, 2000);
             } else {
                 console.log(`Play button not found after 2 retries for ${bot.bot}, skipping...`);
                 setTimeout(() => {
                     checkAndMoveToNextBot(bot);
-                }, bot.waitTime);  // Move to the next bot after the wait time
+                }, bot.waitTime); // Move to the next bot after the wait time
             }
         }
     }
@@ -130,6 +132,14 @@
     // Function to start the bot process
     function startBotProcess() {
         const bot = bots[currentBotIndex];
+
+        // Skip bot if the current time is outside allowed hours
+        if (bot.allowedTime && !isWithinAllowedTime(bot.allowedTime)) {
+            console.log(`Skipping ${bot.bot} because it's outside the allowed time (${bot.allowedTime.start} - ${bot.allowedTime.end})`);
+            checkAndMoveToNextBot(bot);
+            return;
+        }
+
         openBot(bot);
 
         // Wait for 5 seconds to allow the page to load before clicking the play button
@@ -138,6 +148,6 @@
         }, 5000);
     }
 
-    setTimeout(startBotProcess, 3000);  // Start 3 seconds after the script is loaded
+    setTimeout(startBotProcess, 3000); // Start 3 seconds after the script is loaded
 
 })();
