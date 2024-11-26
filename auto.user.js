@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         tanagram AI
 // @namespace    http://tampermonkey.net/
-// @version      2.6
+// @version      2.7
 // @description  Automatically open Telegram bots, click the Play button, then click the Launch button (if available), and move to the next bot with page refresh, then repeat the cycle infinitely.
 // @author       zoder codes
 // @downloadURL  https://raw.githubusercontent.com/bekzod-creator/universal/main/auto.user.js
@@ -13,18 +13,12 @@
 (function() {
     'use strict';
 
-    // List of bots with their selectors and wait times
+    // List of remaining bots with their selectors and wait times
     const bots = [
-        { bot: "memefi_coin_bot", text: "Play", waitTime: 100000 },
-        { bot: "BybitCoinsweeper_Bot", text: "Play!", waitTime: 100000, special: "bybit_coinsweeper" },
-        { bot: "tapswap_bot", text: "Play", waitTime: 8000, special: "tapswap" },
+        { bot: "BybitCoinsweeper_Bot", text: "Play!", waitTime: 200000, special: "bybit_coinsweeper" },
         { bot: "BlumCryptoBot", text: "Launch Blum", waitTime: 50000 },
-        { bot: "theYescoin_bot", text: "🕹 Play for Airdrop", waitTime: 8000, special: "yescoin" },
-        { bot: "gemzcoin_bot", text: "Play Now", waitTime: 30000 },
-        { bot: "xkucoinbot", text: "🎮 Play Game", waitTime: 30000 },
-        { bot: "notpixel", text: "start", waitTime: 40000 },
-        { bot: "token1win_bot", text: "Play", waitTime: 60000 },
-        { bot: "hamster_kombat_bot", text: "Play", waitTime: 100000, special: "hamster_kombat" }
+        { bot: "hamster_kombat_bot", text: "Play", waitTime: 100000, special: "hamster_kombat" },
+        { bot: "notpixel", text: "start", waitTime: 40000 }
     ];
 
     let currentBotIndex = localStorage.getItem('currentBotIndex') ? parseInt(localStorage.getItem('currentBotIndex')) : 0;
@@ -49,27 +43,7 @@
         return null;
     }
 
-    // Special functions to handle custom bot elements (like tapswap, yescoin, etc.)
-    function findTapswapCustomElement() {
-        const elements = document.querySelectorAll('div.new-message-bot-commands-view');
-        for (let element of elements) {
-            if (element.textContent.trim() === '👋 Play') {
-                return element;
-            }
-        }
-        return null;
-    }
-
-    function findYescoinCustomElement() {
-        const elements = document.querySelectorAll('span.reply-markup-button-text');
-        for (let element of elements) {
-            if (element.innerHTML.includes('🕹') && element.textContent.trim().includes('Play for Airdrop')) {
-                return element;
-            }
-        }
-        return null;
-    }
-
+    // Special functions to handle custom bot elements (like hamster_kombat, bybit_coinsweeper, etc.)
     function findHamsterKombatCustomElement() {
         const elements = document.querySelectorAll('div.new-message-bot-commands-view');
         for (let element of elements) {
@@ -95,14 +69,6 @@
         let playButton = findButtonByText(bot.text);
 
         // Handle special bots with custom elements
-        if (bot.bot === "tapswap_bot" && !playButton) {
-            playButton = findTapswapCustomElement();
-        }
-
-        if (bot.bot === "theYescoin_bot" && !playButton) {
-            playButton = findYescoinCustomElement();
-        }
-
         if (bot.bot === "hamster_kombat_bot" && !playButton) {
             playButton = findHamsterKombatCustomElement();
         }
