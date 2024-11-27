@@ -19,7 +19,7 @@
         { bot: "BlumCryptoBot", text: "Launch Blum", waitTime: 50000 },
         { bot: "hamster_kombat_bot", text: "Play", waitTime: 30000, special: "hamster_kombat" },
         { bot: "notpixel", text: "start", waitTime: 15000 },
-        { bot: "Mdaowalletbot", text: "Играть", fallbackText: "Play&Earn", waitTime: 15000, allowedTime: { start: "09:00", end: "12:00" } }
+        { bot: "Mdaowalletbot", text: "Играть", fallbackText: "Play&Earn", waitTime: 15000, allowedTime: { start: "00:00", end: "23:59" } }
     ];
 
     let currentBotIndex = localStorage.getItem('currentBotIndex') ? parseInt(localStorage.getItem('currentBotIndex')) : 0;
