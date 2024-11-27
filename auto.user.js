@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         tanagram AI
 // @namespace    http://tampermonkey.net/
-// @version      2.8
+// @version      2.9
 // @description  Automatically open Telegram bots, click the Play button, then click the Launch button (if available), and move to the next bot with page refresh, then repeat the cycle infinitely.
 // @author       zoder codes
 // @downloadURL  https://raw.githubusercontent.com/bekzod-creator/universal/main/auto.user.js
