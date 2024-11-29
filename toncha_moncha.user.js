@@ -5,7 +5,9 @@
 // @description  toncha moncha to webcha
 // @author       Your Name
 // @match        https://tonstation.app/app/*
-// @match        https://web.telegram.org/k/
+// @match        https://web.telegram.org/k/*
+// @downloadURL  https://raw.githubusercontent.com/bekzod-creator/universal/main/toncha_moncha.user.js
+// @updateURL    https://raw.githubusercontent.com/bekzod-creator/universal/main/toncha_moncha.user.js
 // @grant        none
 // ==/UserScript==
 
