@@ -3,10 +3,10 @@
 // @namespace   zoderman scriptsc
 // @match       https://zavod.mdaowallet.com/*
 // @grant       none
-// @version     1.1
+// @version     1.2
 // @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/ZAVOD%20CLAIMER.user.js
 // @updateURL    https://github.com/bekzod-creator/universal/raw/refs/heads/main/ZAVOD%20CLAIMER.user.js
-// @description  zavodcha
+// @description  zacodchaaaa
 // ==/UserScript==
 
 (function() {
@@ -23,8 +23,8 @@
                     try {
                         parentElement.click();
                         console.log("Claim button clicked!");
-                        // Wait a moment and then click the next button
-                        setTimeout(clickBonusButton, 500); // Adjust delay as needed
+                        // Wait 3 seconds and then click the bonus button
+                        setTimeout(clickBonusButton, 3000);
                         return;
                     } catch (error) {
                         console.error("Error while clicking the claim button's parent element:", error);
