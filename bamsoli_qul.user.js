@@ -4,8 +4,8 @@
 // @version      1.0
 // @description  bumchaga
 // @author       zoderman
-// @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/bamisoli_qul.user.js
-// @updateURL    https://github.com/bekzod-creator/universal/raw/refs/heads/main/bamisoli_qul.user.js
+// @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/bamsoli_qul.user.js
+// @updateURL    https://github.com/bekzod-creator/universal/raw/refs/heads/main/bamsoli_qul.user.js
 // @match        https://app.bums.bot/*
 // @match        https://web.telegram.org/*
 // @grant        none
