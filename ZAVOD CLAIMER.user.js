@@ -3,16 +3,16 @@
 // @namespace   zoderman scriptsc
 // @match       https://zavod.mdaowallet.com/*
 // @grant       none
-// @version     1.2
+// @version     1.4
 // @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/ZAVOD%20CLAIMER.user.js
 // @updateURL    https://github.com/bekzod-creator/universal/raw/refs/heads/main/ZAVOD%20CLAIMER.user.js
-// @description  zacodchaaaa
+// @description 1111
 // ==/UserScript==
 
 (function() {
     'use strict';
 
-    // Function to simulate mouse click on the CLAIM button based on SVG presence
+    // Function to simulate mouse click on the CLAIM button
     function clickClaimButton() {
         const svgs = document.querySelectorAll('svg');
         for (let svg of svgs) {
@@ -36,7 +36,7 @@
 
     // Function to click the "ЗАБРАТЬ БЕЗ БОНУСА" button
     function clickBonusButton() {
-        const bonusButton = document.querySelector('div.sc-blHHSb.sc-gtLWhw.sc-kZrBCu.kqMMnW.jTrzQY.jndmy');
+        const bonusButton = document.querySelector('div[bgcolor="#4E4E8F"][br="25px"][height="50px"][width="100%"][border="1px solid #4E4E8F"]');
         if (bonusButton) {
             try {
                 bonusButton.click();
@@ -45,7 +45,7 @@
                 console.error("Error while clicking the bonus button:", error);
             }
         } else {
-            console.log("Bonus button not found.");
+            console.error("Bonus button not found. Check the selector.");
         }
     }
 
