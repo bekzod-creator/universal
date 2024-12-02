@@ -27,8 +27,6 @@
 
     // Function to check if the current time is within allowed hours
     function isWithinAllowedTime(allowedTime) {
-        if (!allowedTime) return true;
-
         const now = new Date();
         const currentTime = now.getHours() * 60 + now.getMinutes(); // Convert time to minutes since midnight
 
@@ -73,7 +71,7 @@
 
             // Wait for 5 seconds before checking for a 'Launch' button
             setTimeout(() => {
-                const launchButton = findButtonByText("Launch");
+                const launchButton = findButton({ text: "Launch" });
                 if (launchButton) {
                     launchButton.click();
                     console.log(`Launch button clicked for ${bot.bot}`);
@@ -89,4 +87,54 @@
             }, 5000); // 5 seconds delay after clicking Play
 
         } else {
-            console.log(`Play button
+            console.log(`Play button not found for ${bot.bot}, retrying... (${retryCount + 1}/2)`);
+
+            if (retryCount < 2) {
+                setTimeout(() => {
+                    clickPlayThenLaunch(bot, retryCount + 1); // Retry after 2 seconds
+                }, 2000);
+            } else {
+                console.log(`Play button not found after 2 retries for ${bot.bot}, skipping...`);
+                setTimeout(() => {
+                    checkAndMoveToNextBot(bot);
+                }, bot.waitTime); // Move to the next bot after the wait time
+            }
+        }
+    }
+
+    // Function to check current bot and move to the next one
+    function checkAndMoveToNextBot(bot) {
+        currentBotIndex++;
+        if (currentBotIndex < bots.length) {
+            localStorage.setItem('currentBotIndex', currentBotIndex);
+            location.reload();
+        } else {
+            console.log("All bots processed. Restarting the cycle...");
+            localStorage.setItem('currentBotIndex', 0);
+            location.reload();
+        }
+    }
+
+    // Function to start the bot process
+    function startBotProcess() {
+        const bot = bots[currentBotIndex];
+
+        // Skip bot if the current time is outside allowed hours
+        if (bot.allowedTime && !isWithinAllowedTime(bot.allowedTime)) {
+            console.log(`Skipping ${bot.bot} because it's outside the allowed time (${bot.allowedTime.start} - ${bot.allowedTime.end})`);
+            checkAndMoveToNextBot(bot);
+            return;
+        }
+
+        openBot(bot);
+
+        // Wait for 5 seconds to allow the page to load before clicking the play button
+        setTimeout(() => {
+            clickPlayThenLaunch(bot);
+        }, 5000);
+    }
+
+    setTimeout(startBotProcess, 3000); // Start 3 seconds after the script is loaded
+
+})();
+
