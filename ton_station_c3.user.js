@@ -2,8 +2,8 @@
 // @name         Toncha Moncha Webcha Calimcha
 // @namespace    http://tampermonkey.net/
 // @version      1.4
-// @description  Enhanced Toncha Moncha Webcha script with Claim and Start Farming functionality, looping behavior
-// @author       Your Name
+// @description  zoderman
+// @author       zoderman
 // @match        https://tonstation.app/app/*
 // @match        https://web.telegram.org/k/*
 // @downloadURL  https://raw.githubusercontent.com/bekzod-creator/universal/main/ton_station_c3.user.js
