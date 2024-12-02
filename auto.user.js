@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         tanagram AI
 // @namespace    http://tampermonkey.net/
-// @version      3.2
+// @version      3.3
 // @description  bulajak harobadan chiqqan millionerlar
 // @author       zoder codes
 // @downloadURL  https://raw.githubusercontent.com/bekzod-creator/universal/main/auto.user.js
@@ -20,7 +20,8 @@
         { bot: "hamster_kombat_bot", text: "Play", waitTime: 30000, special: "hamster_kombat" },
         { bot: "notpixel", text: "start", waitTime: 15000 },
         { bot: "Mdaowalletbot", text: "Играть", fallbackText: "Play&Earn", waitTime: 15000, allowedTime: { start: "00:00", end: "23:59" } },
-        { bot: "Bums", text: "Play", waitTime: 10000, specialSelector: '.new-message-bot-commands.is-view' }
+        { bot: "Bums", text: "Play", waitTime: 10000, specialSelector: '.new-message-bot-commands.is-view' },
+        { bot: "tonstationgames_bot", text: "Launch TON Station", waitTime: 15000, specialSelector: '.reply-markup-button-text' } // Added bot
     ];
 
     let currentBotIndex = localStorage.getItem('currentBotIndex') ? parseInt(localStorage.getItem('currentBotIndex')) : 0;
@@ -137,4 +138,3 @@
     setTimeout(startBotProcess, 3000); // Start 3 seconds after the script is loaded
 
 })();
-
