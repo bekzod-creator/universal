@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         bamsoli qul
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  bumchaga
 // @author       zoderman
 // @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/bamsoli_qul.user.js
