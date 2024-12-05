@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         tanagram AI
 // @namespace    http://tampermonkey.net/
-// @version      3.3
+// @version      3.4
 // @description  bulajak harobadan chiqqan millionerlar
 // @author       zoder codes
 // @downloadURL  https://raw.githubusercontent.com/bekzod-creator/universal/main/auto.user.js
