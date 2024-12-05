@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Toncha Moncha Webcha Calimcha
 // @namespace    http://tampermonkey.net/
-// @version      1.4
+// @version      1.5
 // @description  zoderman
 // @author       zoderman
 // @match        https://tonstation.app/app/*
