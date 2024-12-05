@@ -3,7 +3,7 @@
 // @namespace   zoderman scriptsc
 // @match       https://zavod.mdaowallet.com/*
 // @grant       none
-// @version     1.4
+// @version     1.5
 // @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/ZAVOD%20CLAIMER.user.js
 // @updateURL    https://github.com/bekzod-creator/universal/raw/refs/heads/main/ZAVOD%20CLAIMER.user.js
 // @description 1111
