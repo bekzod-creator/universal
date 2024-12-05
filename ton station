@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Change iframe src Parameter
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Replace "=web" with "=android" in iframe src attributes
 // @author       Your Name
 // @match        https://tonstation.app/app/*
