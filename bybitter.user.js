@@ -3,7 +3,7 @@
 // @namespace    Violentmonkey Scripts
 // @match        *://bybitcoinsweeper.com/*
 // @grant        none
-// @version      0.1
+// @version      0.2
 // @author       zoder
 // @icon         https://mudachyo.codes/bybit/logo.jpg
 // @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/bybitter.user.js
