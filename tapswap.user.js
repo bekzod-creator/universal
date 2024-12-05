@@ -3,7 +3,7 @@
 // @namespace    Violentmonkey Scripts
 // @match        *://*.tapswap.*/*
 // @grant        none
-// @version      1.0
+// @version      1.1
 // @author       Bekoz
 // @downloadURL  https://github.com/bekzod-creator/universal/raw/refs/heads/main/tapswap.user.js
 // @updateURL    https://github.com/bekzod-creator/universal/raw/refs/heads/main/tapswap.user.js
